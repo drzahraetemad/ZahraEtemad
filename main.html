@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahra Etemad, M.D. — Professional Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --bg-light: #F4F9FB;
+  --surface: #FFFFFF;
+  --primary: #102A43;   /* Deep Navy for text */
+  --accent: #0E7C86;    /* Deep Medical Teal */
+  --accent-bright: #2DD4BF; /* Brighter Teal for ECG glow */
+  --text-dark: #102A43;
+  --text-muted: #486581;
+  --border: #DCEEF3;
+  --ease-quiet: cubic-bezier(.22, 1, .36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === HORIZONTAL JOURNEY TRACK === */
+.journey-track {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.journey-track::-webkit-scrollbar { display: none; }
+
+.panel {
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  position: relative;
+  padding: 4rem 2rem 8rem;
+}
+
+/* Gentle gradient shifts from pure white to icy blue */
+#hero { background: #FFFFFF; }
+#experience { background: #F0F9FB; }
+#education { background: #E6F5F8; }
+#skills { background: #DCEFF3; }
+#achievements { background: #D2E9EE; }
+#publication { background: #C8E3E9; }
+
+/* Giant faded background number */
+.bg-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Spectral', serif;
+  font-size: 35rem;
+  font-weight: 700;
+  color: rgba(14, 124, 134, 0.04);
+  z-index: 0;
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.panel-content {
+  width: 100%;
+  max-width: 850px;
+  height: 100%;
+  max-height: 75vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(14, 124, 134, 0.2) transparent;
+}
+.panel-content::-webkit-scrollbar { width: 4px; }
+.panel-content::-webkit-scrollbar-thumb { background: rgba(14, 124, 134, 0.2); border-radius: 4px; }
+
+/* Entrance Animation */
+.panel-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-quiet), transform 0.8s var(--ease-quiet);
+}
+.panel.is-active .panel-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === TYPOGRAPHY === */
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+  font-weight: 600;
+}
+
+h2 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+/* Medical ECG accent under H2 */
+h2::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 20px;
+  margin-top: 1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20' fill='none' stroke='%230E7C86' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M0,10 L30,10 L35,10 L40,2 L45,18 L50,10 L60,10 L65,10 L70,5 L75,15 L80,10 L120,10'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+/* === HERO PANEL === */
+.hero-content {
+  align-items: center;
+  text-align: center;
+}
+
+.profile-box {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid rgba(14, 124, 134, 0.2);
+  margin-bottom: 2rem;
+  box-shadow: 0 15px 35px rgba(16, 42, 67, 0.1);
+}
+
+.profile-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(2.8rem, 6vw, 4rem);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+}
+
+.header-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2.5rem;
+  font-weight: 600;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 2.5rem;
+  font-size: 0.95rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item:hover { color: var(--primary); }
+.contact-item i { color: var(--accent); }
+
+/* === TIMELINE (Experience & Education) === */
+.timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: rgba(14, 124, 134, 0.2);
+}
+
+.entry {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+.entry:last-child { padding-bottom: 0; }
+
+.entry::before {
+  content: '';
+  position: absolute;
+  left: -1.55rem;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  z-index: 1;
+}
+
+.entry-card-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.entry-image-card {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(16, 42, 67, 0.08);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.entry-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-quiet);
+}
+
+.entry-image-card:hover img {
+  transform: scale(1.08);
+}
+
+.entry-text {
+  flex: 1;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.entry-title {
+  font-family: 'Spectral', serif;
+  font-size: 1.4rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.entry-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(14, 124, 134, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.entry-subtitle {
+  font-family: 'Spectral', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.entry-list {
+  list-style: none;
+}
+
+.entry-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #334E68;
+  line-height: 1.6;
+}
+
+.entry-list li::before {
+  content: '\f105';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+/* === SKILLS GRID === */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  transition: all 0.3s var(--ease-quiet);
+  box-shadow: 0 4px 6px rgba(16, 42, 67, 0.02);
+}
+
+.skill-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(14, 124, 134, 0.1);
+}
+
+.skill-card i {
+  font-size: 1.3rem;
+  color: var(--accent);
+  width: 24px;
+  text-align: center;
+}
+
+.skill-card span {
+  font-family: 'Spectral', serif;
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+/* === HIGHLIGHT BOXES (Achievements & Publications) === */
+.highlight-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 4px 15px rgba(16, 42, 67, 0.04);
+}
+
+.highlight-text {
+  font-family: 'Spectral', serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #334E68;
+}
+
+.highlight-text strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.pub-link:hover { border-color: var(--accent); }
+
+/* === MEDICAL NAVIGATION (ECG WAVE) === */
+.medical-nav {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 100;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(16, 42, 67, 0.05);
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.ecg-container {
+  flex: 1;
+  position: relative;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.ecg-bg, .ecg-progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  transform: translateY(-50%);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ecg-bg { stroke: rgba(14, 124, 134, 0.15); }
+
+.ecg-progress {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 6px rgba(45, 212, 191, 0.8));
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.6s var(--ease-quiet);
+}
+
+.nav-nodes {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.node {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-quiet);
+  color: var(--text-muted);
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(16, 42, 67, 0.05);
+}
+
+.node:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+.node.active {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: var(--accent);
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(14, 124, 134, 0.4);
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1.15); }
+  50% { transform: scale(1.25); }
+}
+
+/* Swipe Hint */
+.swipe-hint {
+  position: absolute;
+  bottom: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: pulse-x 2.5s ease-in-out infinite;
+  pointer-events: none;
+  font-weight: 600;
+}
+
+@keyframes pulse-x {
+  0%, 100% { transform: translateX(-50%); opacity: 0.6; }
+  50% { transform: translateX(-45%); opacity: 1; }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .bg-number { font-size: 15rem; }
+  .panel { padding: 4rem 1.5rem 7rem; }
+  .medical-nav { width: 95%; gap: 0.5rem; }
+  .nav-btn { width: 36px; height: 36px; font-size: 0.8rem; }
+  .node { width: 32px; height: 32px; font-size: 0.8rem; }
+  .contact-info { flex-direction: column; gap: 1rem; }
+  .entry-card-layout { flex-direction: column; }
+  .entry-image-card { width: 100%; height: 180px; }
+}
+</style>
+</head>
+<body>
+
+<!-- MEDICAL NAVIGATION -->
+<div class="medical-nav">
+  <button class="nav-btn" id="prev-btn" aria-label="Previous Section">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  
+  <div class="ecg-container">
+    <svg class="ecg-bg" viewBox="0 0 100 20" preserveAspectRatio="none">
+      <path pathLength="100" d="M0,10 L15,10 L18,10 L20,2 L22,18 L24,10 L35,10 L40,10 L42,5 L44,15 L46,10 L55,10 L60,10 L62,2 L64,18 L66,10 L75,10 L80,10 L82,5 L84,15 L86,10 L100,10" />
+    </svg>
+    <svg class="ecg-progress" viewBox="0 0 100 20" preserveAspectRatio="none">
+      <path pathLength="100" d="M0,10 L15,10 L18,10 L20,2 L22,18 L24,10 L35,10 L40,10 L42,5 L44,15 L46,10 L55,10 L60,10 L62,2 L64,18 L66,10 L75,10 L80,10 L82,5 L84,15 L86,10 L100,10" />
+    </svg>
+    
+    <div class="nav-nodes">
+      <div class="node active" data-index="0" title="Introduction"><i class="fa-solid fa-user-doctor"></i></div>
+      <div class="node" data-index="1" title="Experience"><i class="fa-solid fa-briefcase-medical"></i></div>
+      <div class="node" data-index="2" title="Education"><i class="fa-solid fa-user-graduate"></i></div>
+      <div class="node" data-index="3" title="Clinical Skills"><i class="fa-solid fa-stethoscope"></i></div>
+      <div class="node" data-index="4" title="Achievements"><i class="fa-solid fa-trophy"></i></div>
+      <div class="node" data-index="5" title="Publication"><i class="fa-solid fa-book-medical"></i></div>
+    </div>
+  </div>
+
+  <button class="nav-btn" id="next-btn" aria-label="Next Section">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>
+
+<div class="journey-track" id="track">
+
+  <!-- 00. HERO -->
+  <section id="hero" class="panel is-active">
+    <div class="bg-number">00</div>
+    <div class="panel-content hero-content">
+      <div class="profile-box">
+        <img src="https://i.postimg.cc/rmH4SZyy/me.jpg" alt="Zahra Etemad">
+      </div>
+      <h1>Zahra Etemad</h1>
+      <div class="header-role">Psychiatry Resident, M.D.</div>
+      <div class="contact-info">
+        <a href="mailto:zahraetemad9876@gmail.com" class="contact-item">
+          <i class="fas fa-envelope"></i> zahraetemad9876@gmail.com
+        </a>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i> 09175677975
+        </div>
+        <a href="https://www.linkedin.com/in/zahra-etemad-2aa6bb17b/" target="_blank" rel="noopener noreferrer" class="contact-item">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="swipe-hint">
+      <i class="fas fa-arrow-right"></i>
+      <span>Scroll or Swipe to Begin</span>
+    </div>
+  </section>
+
+  <!-- 01. PROFESSIONAL EXPERIENCE -->
+  <section id="experience" class="panel">
+    <div class="bg-number">01</div>
+    <div class="panel-content">
+      <span class="eyebrow">01 — Professional Experience</span>
+      <h2>Experience</h2>
+      <div class="timeline">
+        
+        <!-- Entry 1: Psychiatry Resident -->
+        <div class="entry">
+          <div class="entry-card-layout">
+            <div class="entry-image-card">
+              <img src="https://i.postimg.cc/3J5BVW7h/unnamed.webp" alt="Ibn Sina Hospital">
+            </div>
+            <div class="entry-text">
+              <div class="entry-header">
+                <div class="entry-title">Psychiatry Resident</div>
+                <div class="entry-date">2023 – Present</div>
+              </div>
+              <div class="entry-subtitle">Ibn Sina Hospital, Shiraz University of Medical Sciences, Shiraz, Iran</div>
+              <ul class="entry-list">
+                <li>Three years of clinical experience as a Psychiatry Resident.</li>
+                <li>Assessment and management of patients with psychiatric disorders.</li>
+                <li>Experience in pharmacotherapy and methadone maintenance therapy.</li>
+                <li>Collaboration with multidisciplinary medical and mental-health teams.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 2: Medical Internship -->
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-title">Medical Internship</div>
+            <div class="entry-date">Jan 2022 – Jul 2022</div>
+          </div>
+          <div class="entry-subtitle">Shiraz University of Medical Sciences, Shiraz, Iran</div>
+          <ul class="entry-list">
+            <li>Completed clinical internship training at Shiraz University of Medical Sciences.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02. EDUCATION -->
+  <section id="education" class="panel">
+    <div class="bg-number">02</div>
+    <div class="panel-content">
+      <span class="eyebrow">02 — Education</span>
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-title">Psychiatry Residency Program</div>
+            <div class="entry-date">Aug 2023 – Present</div>
+          </div>
+          <div class="entry-subtitle">Shiraz University of Medical Sciences</div>
+          <ul class="entry-list">
+            <li>Training in clinical psychiatry and psychiatric patient management.</li>
+            <li>Experience in pharmacotherapy and methadone maintenance therapy.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-title">Doctor of Medicine</div>
+            <div class="entry-date">Aug 2016 – Aug 2023</div>
+          </div>
+          <div class="entry-subtitle">Shiraz University of Medical Sciences</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-title">High School Diploma</div>
+            <div class="entry-date">Aug 2009 – Aug 2016</div>
+          </div>
+          <div class="entry-subtitle">National Organization for Development of Exceptional Talents (Sampad)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03. CLINICAL SKILLS -->
+  <section id="skills" class="panel">
+    <div class="bg-number">03</div>
+    <div class="panel-content">
+      <span class="eyebrow">03 — Clinical Skills</span>
+      <h2>Competencies</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><i class="fas fa-pills"></i><span>Pharmacotherapy</span></div>
+        <div class="skill-card"><i class="fas fa-syringe"></i><span>Methadone Maintenance Therapy</span></div>
+        <div class="skill-card"><i class="fas fa-clipboard-list"></i><span>Psychiatric Assessment</span></div>
+        <div class="skill-card"><i class="fas fa-notes-medical"></i><span>Clinical History Taking</span></div>
+        <div class="skill-card"><i class="fas fa-comments"></i><span>Patient Communication</span></div>
+        <div class="skill-card"><i class="fas fa-users"></i><span>Multidisciplinary Teamwork</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04. ACHIEVEMENTS -->
+  <section id="achievements" class="panel">
+    <div class="bg-number">04</div>
+    <div class="panel-content">
+      <span class="eyebrow">04 — Achievements</span>
+      <h2>Recognition</h2>
+      <div class="highlight-box">
+        <div class="highlight-text">
+          Ranked <strong>32nd in Region 1</strong> and <strong>78th nationally</strong> among <strong>498,822 contestants</strong> in the Iranian National University Entrance Examination (Konkur).
+        </div>
+      </div>
+      <div class="highlight-box">
+        <div class="highlight-text">
+          Two-year membership in the <strong>National Elites Foundation</strong>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05. PUBLICATION -->
+  <section id="publication" class="panel">
+    <div class="bg-number">05</div>
+    <div class="panel-content">
+      <span class="eyebrow">05 — Publication</span>
+      <h2>Research</h2>
+      <div class="highlight-box">
+        <div class="highlight-text">
+          Research publication in <em>BMC Psychiatry</em>.
+        </div>
+        <a href="https://link.springer.com/article/10.1186/s12888-026-08084-z" target="_blank" rel="noopener noreferrer" class="pub-link">
+          <i class="fas fa-external-link-alt"></i> View Publication
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const track = document.getElementById('track');
+const panels = document.querySelectorAll('.panel');
+const nodes = document.querySelectorAll('.node');
+const ecgProgress = document.querySelector('.ecg-progress');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+let currentIndex = 0;
+const totalPanels = panels.length;
+
+// Convert vertical mouse wheel scroll to horizontal scroll
+track.addEventListener('wheel', (e) => {
+  if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+    e.preventDefault();
+    track.scrollLeft += e.deltaY;
+  }
+}, { passive: false });
+
+// Update active states on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+      const index = Array.from(panels).indexOf(entry.target);
+      
+      panels.forEach(p => p.classList.remove('is-active'));
+      entry.target.classList.add('is-active');
+      
+      nodes.forEach(n => n.classList.remove('active'));
+      nodes[index]?.classList.add('active');
+      
+      // Update ECG progress line
+      const progressPercent = (index / (totalPanels - 1)) * 100;
+      ecgProgress.style.strokeDashoffset = 100 - progressPercent;
+      
+      // Update button states
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === totalPanels - 1;
+      
+      currentIndex = index;
+    }
+  });
+}, { root: track, threshold: 0.5 });
+
+panels.forEach(panel => observer.observe(panel));
+
+// Node Click Navigation
+nodes.forEach(node => {
+  node.addEventListener('click', () => {
+    const index = parseInt(node.getAttribute('data-index'));
+    panels[index].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+  });
+});
+
+// Arrow Button Navigation
+nextBtn.addEventListener('click', () => {
+  if (currentIndex < totalPanels - 1) {
+    panels[currentIndex + 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+  }
+});
+
+prevBtn.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    panels[currentIndex - 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+  }
+});
+
+// Keyboard Arrow Navigation
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' && currentIndex < totalPanels - 1) {
+    panels[currentIndex + 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+  } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+    panels[currentIndex - 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+  }
+});
+
+// Hide swipe hint after first scroll
+track.addEventListener('scroll', () => {
+  const hint = document.querySelector('.swipe-hint');
+  if (hint && track.scrollLeft > 50) {
+    hint.style.opacity = '0';
+    hint.style.pointerEvents = 'none';
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>
